@@ -10,13 +10,13 @@ import { CarrinhoProvider } from "./context/carrinhoContext";
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <CarrinhoProvider>
+      <CarrinhoProvider>
+        <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/carrinho" element={<Carrinho />} />
           <Route path="*" element={<PaginaErro />} />
-        </CarrinhoProvider>
-      </Routes>
+        </Routes>
+      </CarrinhoProvider>
     </BrowserRouter>
   );
 }
