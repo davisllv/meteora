@@ -5,7 +5,6 @@ import { useLocation } from "react-router-dom";
 
 const Quantidade = ({ itemCarrinho, adicionarProduto, removerProduto }) => {
   const location = useLocation();
-
   return (
     <div
       className={`d-flex flex-column align-items-center ${

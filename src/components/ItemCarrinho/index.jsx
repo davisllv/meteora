@@ -3,13 +3,13 @@ import Botao from "@/components/Botao";
 import Quantidade from "@/components/Quantidade";
 import ValorFormatado from "@/components/ValorFormatado";
 import InfoItemCarrinho from "./InfoItemCarrinho";
+import { useCarrinhoContext } from "../../hooks/useCarrinhoContext";
 
 const ItemCarrinho = ({
   itemCarrinho,
-  removerProdutoCarrinho,
-  adicionarProduto,
-  removerProduto,
 }) => {
+  const { adicionarProduto, removerProduto, deletarProduto } = useCarrinhoContext()
+    console.log(adicionarProduto)
   return (
     <li key={itemCarrinho.id}>
       <>
@@ -29,7 +29,7 @@ const ItemCarrinho = ({
           <Botao
             variant="deleteItem"
             aria-label="Excluir"
-            handleClick={() => removerProdutoCarrinho(itemCarrinho.id)}
+            handleClick={() => deletarProduto(itemCarrinho.id)}
           >
             delete_forever
           </Botao>

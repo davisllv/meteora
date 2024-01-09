@@ -5,9 +5,9 @@ export const useCarrinhoContext = () => {
   const { carrinho, setCarrinho } = useContext(CarrinhoContext);
 
   function adicionarProduto(novoProduto) {
-    const temOProduto = carrinho.some((itemDoCarrinho) => {
-      itemDoCarrinho.id === novoProduto.id;
-    });
+    const temOProduto = carrinho.some((itemDoCarrinho) => 
+      itemDoCarrinho.id === novoProduto.id
+    );
 
     if (!temOProduto) {
       novoProduto.quantidade = 1;
@@ -43,10 +43,15 @@ export const useCarrinhoContext = () => {
     );
   }
 
+  function deletarProduto(id) {
+    setCarrinho((carrinhoAnterior) => carrinhoAnterior.filter((item) => item.id !== id));
+  }
+
   return {
     carrinho,
     setCarrinho,
     adicionarProduto,
     removerProduto,
+    deletarProduto,
   };
 };
