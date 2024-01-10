@@ -27,20 +27,18 @@ export const useCarrinhoContext = () => {
   }
 
   function removerProduto(id) {
-    const produto = carrinho.find((itemDoCarrinho) => itemDoCarrinho.id === id);
-    const ehOUltimo = produto.quantidade === 1;
-    if (ehOUltimo) {
-      return setCarrinho((carrinhoAnterior) =>
-        carrinhoAnterior.filter((itemDoCarrinho) => itemDoCarrinho.id !== id)
-      );
-    }
+    const produto = carrinho.find((item) => item.id === id);
+    if (produto.quantidade === 1)
+      return setCarrinho(carrinho.filter((item) => item.id !== produto.id));
 
-    setCarrinho((carrinhoAnterior) =>
-      carrinhoAnterior.map((itemDoCarrinho) => {
-        if (itemDoCarrinho.id === id) itemDoCarrinho.quantidade -= 1;
-        return itemDoCarrinho;
-      })
-    );
+    setCarrinho((prevState) => {
+      const newState = {
+        ...produto,
+        quantidade: produto.quantidade - 1,
+      };
+
+      return [...prevState, newState];
+    });
   }
 
   return {
